@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All posts</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="main">
+       <div class="sticky"><h1>Instagram</h1></div> 
+        <div class="new_post">
+           
+            <div class="opt-two"> <a href="http://localhost:8080/posts/new">New Post</a> </div>
+        </div>
+        <br>
+        
+        <% for(post of posts) { %>
+            <div class="post">
+                <h3 class="user ">@<%= post.username %></h3>
+                <div class="edit">
+                    <h4 class="caption"><%= post.caption %></h4>
+                    <form method="post" action="/posts/<%= post.id %>?_method=DELETE">
+                        <button>Delete post</button>
+                    </form>
+                </div>
+                <div class="imge">
+                    <img src="<%= post.image %>" alt="/">
+                    Like: <%= post.like %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Comment: <%= post.comment %>
+                    <div class="info">
+                        <div class="opt-three">
+                            <a href="http://localhost:8080/posts/<%= post.id %>/edit">Edit Caption</a>
+                        </div>
+                        <div class="opt-four">
+                            <a href="http://localhost:8080/posts/<%= post.id %>">See in detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <% } %>
+
+    </div>
+</body>
+</html>
